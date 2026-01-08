@@ -1,0 +1,120 @@
+# Service Skip Intro language file
+# Addon Name: Skip Intro
+# Addon id: service.skipintro
+# Addon Provider: norix92
+msgid ""
+msgstr ""
+"Project-Id-Version: service.skipintro\n"
+"Report-Msgid-Bugs-To: https://github.com/norix92/kodi-service.skipintro\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2026-01-08 13:31+0000\n"
+"Last-Translator: norix92\n"
+"Language-Team: German\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.8.7\n"
+
+### APPLICATION
+msgctxt "#30032"
+msgid "Enable on playlists"
+msgstr "Aktiviere Wiedergabelisten"
+
+msgctxt "#30034"
+msgid "Close"
+msgstr "Schließen"
+
+msgctxt "#30035"
+msgid "Set skipping time for this show"
+msgstr "Lege Intro-Länge für diese Show fest"
+
+msgctxt "#30036"
+msgid "Disable skipping for this show"
+msgstr "Intro-Überspringen für diese Serie deaktivieren"
+
+msgctxt "#30037"
+msgid "Skip Intro ([COLOR FFFF4081]$INFO[Window.Property(remaining)][/COLOR] seconds)"
+msgstr "Überspringe Intro ([COLOR FFFF4081]$INFO[Window.Property(remaining)][/COLOR] Sekunden)"
+
+msgctxt "#30038"
+msgid "Skip time (seconds)"
+msgstr "Intro Länge (Sekunden)"
+
+msgctxt "#30039"
+msgid "Prompt at (seconds)"
+msgstr "Anzeige nach (Sekunden)"
+
+msgctxt "#30040"
+msgid "Skip"
+msgstr "Überspringen"
+
+msgctxt "#30041"
+msgid "Not skip"
+msgstr "Nicht überspringen"
+
+msgctxt "#30042"
+msgid "None"
+msgstr "Keiner"
+
+msgctxt "#30043"
+msgid "Info"
+msgstr "Info"
+
+msgctxt "#30044"
+msgid "Debug"
+msgstr "Debug"
+
+msgctxt "#30060"
+msgid "[B]Skip Intro DEMO MODE ENABLED[/B]"
+msgstr "[B]Skip Intro DEMO MODUS AKTIVIERT[/B]"
+
+### SETTINGS
+msgctxt "#30600"
+msgid "Behaviour"
+msgstr "Verhalten"
+
+msgctxt "#30603"
+msgid "Default action when nothing selected"
+msgstr "Standard-Aktion wenn nichts ausgewählt wird"
+
+msgctxt "#30607"
+msgid "Default Skip for New Shows"
+msgstr "Standard Zeit zum Überspringen eines Intros"
+
+msgctxt "#30608"
+msgid "Notification time"
+msgstr "Benachrichtigungszeit"
+
+msgctxt "#30609"
+msgid "Duration in seconds for notification to be shown"
+msgstr "Dauer in Sekunden zum Anzeigen der Benachrichtigung"
+
+msgctxt "#30700"
+msgid "Expert"
+msgstr "Experte"
+
+msgctxt "#30703"
+msgid "Disable Skip Intro"
+msgstr "Deaktiviere Skip Intro"
+
+msgctxt "#30705"
+msgid "Log level"
+msgstr "Loglevel"
+
+msgctxt "#30800"
+msgid "Developer"
+msgstr "Entwickler"
+
+msgctxt "#30801"
+msgid "Test how the user interface looks"
+msgstr "Testen, wie die Benutzeroberfläche aussieht"
+
+msgctxt "#30803"
+msgid "Enable DEMO mode"
+msgstr "DEMO-Modus aktivieren"
+
+msgctxt "#30807"
+msgid "Show an skipintro pop-up…"
+msgstr "skipintro pop-up anzeigen…"

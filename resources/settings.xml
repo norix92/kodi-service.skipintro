@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+    <category label="30600"> <!-- Behaviour -->
+        <setting label="30603" type="enum" id="autoSkipMode" lvalues="30040|30041" default="0"/>
+        <setting label="30032" type="bool" id="enablePlaylist" default="false" enable="false"/>
+        <setting label="30607" type="slider" id="defaultSkip" default="45" range="5,200" option="int" />
+		<setting label="30608" type="slider" id="notificationTime" default="10" range="0,120" option="int" />
+        <setting label="30609" type="lsep"/> 
+    </category>
+    <category label="30700"> <!-- Expert -->
+        <setting label="30703" type="bool" id="disableSkipIntro" default="false"/>
+        <setting label="30705" type="enum" id="logLevel" lvalues="30042|30043|30044" default="0"/>
+    </category>
+    <category label="30800"> <!-- Developer -->
+        <setting label="30801" type="lsep"/> <!-- Test the GUI -->
+        <setting label="30803" type="bool" id="enableDemoMode" default="false"/>
+        <setting label="30807" type="action" action="RunScript(service.skipintro,test_window,script-skipintro.xml)"/>
+    </category>
+</settings>
