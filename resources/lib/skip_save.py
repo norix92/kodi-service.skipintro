@@ -76,5 +76,3 @@ class Skip_Save:
             start = [i['start'] for i in data if self.cleantitle(i['title']) == self.cleantitle(title)][0]
         except: start = 0
         return  start
-        
-    if not os.path.exists(skipFile): newskip('default', self.defaultSkip)
