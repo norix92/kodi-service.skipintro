@@ -10,7 +10,7 @@
     <extension point="xbmc.service" library="resources/lib/service_entry.py"/>
     <extension point="xbmc.addon.metadata">
         <summary lang="en_GB">Propose to skip the intro of an episode automatically</summary>
-        <description lang="en_GB">A service add-on that shows a Netflix-style notification for skipping the intro in an episode. Based on im85288's UpNext-addon.</description>
+        <description lang="en_GB">A service add-on that shows a Netflix-style notification for skipping the intro in an episode. Based on im85288's UpNext-addon and zDuts' and aenema's TvSkipIntro.</description>
         <platform>all</platform>
         <license>GPL-2.0-only</license>
         <news>
