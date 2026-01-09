@@ -114,18 +114,11 @@
                         </control>
                     </control>
                     <control type="image">
-                        <width>46</width>
-                        <height>46</height>
+                        <width>56</width>
+                        <height>42</height>
                         <aspect>keep</aspect>
                         <texture colordiffuse="ddffffff">nextupicons/30.png</texture>
                         <animation effect="slide" end="13,5" time="0" condition="true">Conditional</animation>
-                    </control>
-                    <control type="image">
-                        <width>46</width>
-                        <height>46</height>
-                        <aspect>keep</aspect>
-                        <texture colordiffuse="ddffffff">$INFO[Window.Property(remaining),nextupicons/,.png]</texture>
-                        <animation effect="slide" end="13,5" time="0" condition="true">Conditional</animation>               
                     </control>
                 </control>
             </control>
