@@ -5,9 +5,9 @@ from __future__ import absolute_import, division, unicode_literals
 from xbmc import PlayList
 from api import Api
 from player import SkipIntroPlayer
-from state import State
+from state import state
 from utils import log as ulog
-
+import inspect
 
 class PlayItem:
     _shared_state = {}
@@ -16,9 +16,11 @@ class PlayItem:
         self.__dict__ = self._shared_state
         self.api = Api()
         self.player = SkipIntroPlayer()
-        self.state = State()
+        #self.state = State()
 
     def log(self, msg, level=2):
+        method = inspect.currentframe().f_back.f_code.co_name
+        msg = f"[{method}] {msg}"
         ulog(msg, name=self.__class__.__name__, level=level)
 
     def get_playlist_position(self):
@@ -46,10 +48,10 @@ class PlayItem:
             return episode, source
             episode = self.api.handle_addon_lookup_of_next_episode()
             current_episode = self.api.handle_addon_lookup_of_current_episode()
-            self.state.current_episode_id = current_episode.get('episodeid')
-            if self.state.current_tv_show_id != current_episode.get('tvshowid'):
-                self.log('Change in TV show ID: last: %s / current: %s' % (self.state.current_tv_show_id, current_episode.get('tvshowid')), 2)
-                self.state.current_tv_show_id = current_episode.get('tvshowid')
+            state.current_episode_id = current_episode.get('episodeid')
+            if state.current_tv_show_id != current_episode.get('tvshowid'):
+                self.log('Change in TV show ID: last: %s / current: %s' % (state.current_tv_show_id, current_episode.get('tvshowid')), 2)
+                state.current_tv_show_id = current_episode.get('tvshowid')
             source = 'addon' if not position else 'playlist'
 
         # Next video from non-addon playlist
@@ -76,7 +78,11 @@ class PlayItem:
         if item.get('type') != 'episode':
             return
             
-        self.state.show_title = item.get('showtitle')
-        #self.state.show_title = item.get('showtitle').encode('utf-8')
-        self.log('Current show_title: %s' % item.get('showtitle'))
+        self.log('Current episode: %s' % item)
+        state.show_id = item.get('tvshowid')
+        state.show_episode_id = item.get('id')
+        state.show_title = item.get('showtitle')
+        state.show_season = item.get('season')
+        state.show_episode = item.get('episode')
+        #state.show_title = item.get('showtitle').encode('utf-8')
         return item

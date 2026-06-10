@@ -9,7 +9,7 @@ from xbmc import Monitor
 from xbmcgui import WindowXMLDialog
 from statichelper import from_unicode
 from utils import addon_path, get_setting_bool, localize, localize_time
-
+import json, xbmcaddon, xbmcvfs, xbmcgui, os, re
 
 class TestPopup(WindowXMLDialog):
     ACTION_PLAYER_STOP = 13
@@ -23,7 +23,7 @@ class TestPopup(WindowXMLDialog):
         self.set_info()
         self.prepare_progress_control()
 
-        self.getControl(3013).setLabel(localize(30034))  # Close
+        self.getControl(3013).setLabel(localize(30002))  # Close
 
     def set_info(self):
         self.setProperty('episode', '4')
@@ -63,7 +63,6 @@ class TestPopup(WindowXMLDialog):
         elif action == self.ACTION_NAV_BACK:
             self.close()
 
-
 def test_popup(window):
     popup = TestPopup(window, addon_path(), 'default', '1080i')
     popup.show()
@@ -79,11 +78,9 @@ def test_popup(window):
         popup.update_progress_control(timeout, wait)
         step += wait
 
-
 def open_settings():
     from xbmcaddon import Addon
     Addon().openSettings()
-
 
 def run(argv):
     """Route to API method"""

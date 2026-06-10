@@ -19,3 +19,13 @@ class State:
         self.pause = False
         self.queued = False
         self.playing_next = False
+    def reset(self):
+        self.current_tv_show_id = None
+        self.current_episode_id = None
+        self.show_title = None
+        self.last_file = None
+        self.track = False
+        self.pause = False
+        self.queued = False
+        self.playing_next = False
+state = State()

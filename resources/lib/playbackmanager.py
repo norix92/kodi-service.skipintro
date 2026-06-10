@@ -4,14 +4,15 @@
 from __future__ import absolute_import, division, unicode_literals
 from xbmc import sleep
 from api import Api
-from skip_save import Skip_Save
+from api_calls import Api_Calls
+from skipintro_data import SkipIntro_Data
 from demo import DemoOverlay
 from player import SkipIntroPlayer
 from playitem import PlayItem
-from state import State
+from state import state
 from skipintro import SkipIntro
 from utils import addon_path, calculate_progress_steps, clear_property, event, get_setting_bool, get_setting_int, log as ulog, set_property
-
+import inspect
 
 class PlaybackManager:
     _shared_state = {}
@@ -20,12 +21,16 @@ class PlaybackManager:
         self.__dict__ = self._shared_state
         self.api = Api()
         self.play_item = PlayItem()
-        self.skip_save = Skip_Save()
-        self.state = State()
+        self.skipintro_data = SkipIntro_Data()
+        self.api_calls = Api_Calls()
         self.player = SkipIntroPlayer()
         self.demo = DemoOverlay(12005)
+        self.intro_start = None
+        self.intro_end = None
 
     def log(self, msg, level=2):
+        method = inspect.currentframe().f_back.f_code.co_name
+        msg = f"[{method}] {msg}"
         ulog(msg, name=self.__class__.__name__, level=level)
 
     def handle_demo(self):
@@ -61,22 +66,30 @@ class PlaybackManager:
         intro_page = SkipIntro('script-skipintro.xml', addon_path(), 'default', '1080i')
         showing_intro_page, skipIntro = self.show_popup_and_wait(intro_page, episode)
 
-        if not showing_intro_page or not skipIntro:
-            return 
-            
+        if intro_page.is_cancel() or not skipIntro:
+            return
+        
         self.log('Skipping Intro', 2)
-        #if source == 'playlist' or self.state.queued:
+        #if source == 'playlist' or state.queued:
             # Skip in playlist media
         #elif self.api.has_addon_data():
             # Play add-on media
         #    self.api.play_addon_item()
         #else:
-        player_id = self.api._get_playerid(playerid_cache=[None])
-        self.log('State show_title: %s' % self.state.show_title)
-        skip_duration = int(self.skip_save.getSkip(title=self.state.show_title))
-        self.api.skip(player_id, skip_duration)
-            
+
+        if not self.intro_end is None and self.intro_end > 0:
+            if self.player.isPlayingVideo():
+                self.log('Skipping in player.')
+                self.player.seekTime(float(self.intro_end))
+            else:
+                self.log('Skipping with API.')
+                player_id = self.api._get_playerid(playerid_cache=[None])
+                
+                if player_id is not None:
+                    self.api.skip(player_id, self.intro_end)
+        
         return
+        
     def show_popup_and_wait(self, intro_page, episode):
         if self.player.getTime() > 2:
             return False, False
@@ -87,12 +100,22 @@ class PlaybackManager:
             self.log('exit early because player is no longer running', 2)
             return False, False
         
-        is_disabled = self.skip_save.checkService(title=self.state.show_title)
-        if not is_disabled: 
+        show_enabled = self.skipintro_data.getShowEnabled(state.show_id)
+        showPopupIfDisabled = get_setting_bool('showPopupIfDisabled') 
+
+        if not show_enabled and not showPopupIfDisabled:
+            self.log('Show disabled. Not showing popup.', 2)
             return False, False
+           
+        self.intro_start, self.intro_end = self.skipintro_data.getIntroData(state.show_id, state.show_title, state.show_episode_id, state.show_season, state.show_episode)
+        if self.intro_start is None:
+            self.intro_start = 0
+            
+        self.log('intro_start: %s seconds.' % self.intro_start)
+        self.log('intro_end: %s seconds.' % self.intro_end)
         
-        start_time = int(self.skip_save.checkStartTime(title=self.state.show_title))
-        while (self.player.isPlaying() and (start_time - play_time > 1)):
+        last_time = self.player.getTime()    
+        while (self.player.isPlaying() and (self.intro_start - play_time > 1)):
             try:
                 play_time = self.player.getTime()
             except RuntimeError:
@@ -100,9 +123,16 @@ class PlaybackManager:
                     intro_page.close()
                     showing_intro_page = False
                 break
-            waiting_time = start_time - play_time
-            self.log('Wating %s seconds...' % waiting_time)
+                
+            if play_time > self.intro_end:
+                self.log("Intro over.")
+                return False, False
+                
+            last_time = play_time
+            waiting_time = self.intro_start - play_time
+            self.log('Wating %s seconds until SkipIntro popup appears' % waiting_time)
             sleep(100)
+            
         progress_step_size = calculate_progress_steps(total_time - play_time)
         intro_page.set_item(episode)
         intro_page.set_progress_step_size(progress_step_size)
@@ -112,10 +142,11 @@ class PlaybackManager:
         set_property('service.skipintro.dialog', 'true')
         showing_intro_page = True
         notification_time = get_setting_int('notificationTime') 
-        if (start_time == 0):
+        
+        if (self.intro_start == 0):
             notification_time = notification_time + 2
 
-        while (self.player.isPlaying() and (notification_time + start_time - play_time > 1) 
+        while (self.player.isPlaying() and (notification_time + self.intro_start - play_time > 1) 
                and not intro_page.is_cancel() and not intro_page.is_skip_intro()):
             try:
                 play_time = self.player.getTime()
@@ -126,13 +157,17 @@ class PlaybackManager:
                     showing_intro_page = False
                 break
 
-            remaining = notification_time + start_time - play_time
-            if not self.state.pause:
+            remaining = notification_time + self.intro_start - play_time
+            if not state.pause:
                 if showing_intro_page:
                     intro_page.update_progress_control(remaining=remaining, runtime=total_time)
             sleep(100)
 
-        autoSkipMode = get_setting_int('autoSkipMode')       
+        autoSkipMode = get_setting_int('autoSkipMode')     
+        if not show_enabled and showPopupIfDisabled:
+            self.log('Show disabled. Showing popup.', 2)
+            return True, False
+            
         if showing_intro_page and intro_page.is_skip_intro():
             return True, True
         elif showing_intro_page and not intro_page.is_skip_intro() and autoSkipMode == 0:

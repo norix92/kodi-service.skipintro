@@ -4,7 +4,8 @@
 from __future__ import absolute_import, division, unicode_literals
 from xbmc import sleep, PLAYLIST_VIDEO, PLAYLIST_MUSIC
 from utils import event, get_int, get_setting_bool, get_setting_int, jsonrpc, log as ulog
-
+import xbmc
+import inspect
 
 class Api:
     """Main API class"""
@@ -22,7 +23,8 @@ class Api:
         self.encoding = 'base64'
 
     def log(self, msg, level=2):
-        """Log wrapper"""
+        method = inspect.currentframe().f_back.f_code.co_name
+        msg = f"[{method}] {msg}"
         ulog(msg, name=self.__class__.__name__, level=level)
 
     def has_addon_data(self):
@@ -42,7 +44,11 @@ class Api:
     
     @staticmethod    
     def skip(player_id, skip_duration):
-        jsonrpc(method='Player.Seek', params={'playerid': player_id, "value":{ 'seconds': skip_duration }}, id=1)
+        props = jsonrpc(method='Player.GetProperties',params={'playerid': player_id,'properties': ['time']})
+        current = props['result']['time']
+        current_seconds = (current['hours'] * 3600 + current['minutes'] * 60 + current['seconds'])
+        delta = skip_duration - current_seconds
+        jsonrpc(method='Player.Seek', params={'playerid': player_id, "value":{ 'seconds': delta }}, id=1)
 
     @staticmethod
     def _get_playerid(playerid_cache=[None]):  # pylint: disable=dangerous-default-value

@@ -8,7 +8,7 @@ from playbackmanager import PlaybackManager
 from player import SkipIntroPlayer
 from statichelper import to_unicode
 from utils import decode_json, get_property, get_setting_bool, kodi_version_major, log as ulog
-
+import inspect
 
 class SkipIntroMonitor(Monitor):
     """Service monitor for Kodi"""
@@ -20,8 +20,9 @@ class SkipIntroMonitor(Monitor):
         self.playback_manager = PlaybackManager()
         Monitor.__init__(self)
 
-    def log(self, msg, level=1):
-        """Log wrapper"""
+    def log(self, msg, level=2):
+        method = inspect.currentframe().f_back.f_code.co_name
+        msg = f"[{method}] {msg}"
         ulog(msg, name=self.__class__.__name__, level=level)
 
     def run(self):  # pylint: disable=too-many-branches

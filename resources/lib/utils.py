@@ -11,7 +11,6 @@ from statichelper import from_unicode, to_unicode
 
 ADDON = Addon()
 
-
 def get_addon_info(key):
     """Return add-on information"""
     return to_unicode(ADDON.getAddonInfo(key))
