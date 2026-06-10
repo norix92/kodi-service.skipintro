@@ -13,5 +13,10 @@ The add-on has various settings to fine-tune the experience, however the default
 
 ## Releases
 
+### v2.0.0 (2026-06-07) 
+- Code rewrite
+- integration of IntroDB and TVmaze 
+### v1.0.1 (2026-05-31) 
+- Bug fixing
 ### v1.0.0 (2026-01-08)
 - Initial Version
