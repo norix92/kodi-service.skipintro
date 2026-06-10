@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="service.skipintro" name="Skip Intro" version="1.0.0" provider-name="norix92">
+<addon id="service.skipintro" name="Skip Intro" version="2.0.0" provider-name="norix92">
     <requires>
         <import addon="xbmc.python" version="3.0.0"/>
     </requires>
@@ -10,10 +10,15 @@
     <extension point="xbmc.service" library="resources/lib/service_entry.py"/>
     <extension point="xbmc.addon.metadata">
         <summary lang="en_GB">Propose to skip the intro of an episode automatically</summary>
-        <description lang="en_GB">A service add-on that shows a Netflix-style notification for skipping the intro in an episode. Based on im85288's UpNext-addon and zDuts' and aenema's TvSkipIntro.</description>
-        <platform>all</platform>
+        <description lang="en_GB">A service add-on that shows a Netflix-style notification for skipping the intro of an episode. Based on im85288's UpNext-addon and zDuts' and aenema's TvSkipIntro. Using API of TVmaze and IntroDB.</description>
+		<platform>all</platform>
         <license>GPL-2.0-only</license>
         <news>
+v2.0.0 (2026-06-07) 
+- Code rewrite
+- integration of IntroDB and TVmaze 
+v1.0.1 (2026-05-31) 
+- Bug fixing
 v1.0.0 (2026-01-08)
 - Initial Version
         </news>
@@ -21,6 +26,7 @@ v1.0.0 (2026-01-08)
             <icon>resources/media/icon.png</icon>
             <fanart>resources/media/fanart.jpg</fanart>
             <screenshot>resources/media/screenshot01.jpg</screenshot>
+			<screenshot>resources/media/screenshot02.jpg</screenshot>
             <screenshot>resources/media/skipintro-settings.jpg</screenshot>
         </assets>
     </extension>
