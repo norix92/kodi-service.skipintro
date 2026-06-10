@@ -39,7 +39,7 @@
                         <itemgap>10</itemgap>
                         <align>left</align>
                         <control type="button" id="11">
-                            <label>    $ADDON[service.skipintro 30037]</label>
+                            <label>    $ADDON[service.skipintro 30001]</label>
                             <onclick>SendClick(3012)</onclick>
                             <!--<visible>Integer.IsGreater(Player.TimeRemaining,59)</visible>-->
                             <height>56</height>
@@ -59,7 +59,7 @@
                             <pulseonselect>no</pulseonselect>
                         </control>
                         <control type="button" id="3013">
-                            <label>$ADDON[service.skipintro 30034]</label>
+                            <label>$ADDON[service.skipintro 30002]</label>
                             <height>56</height>
                             <width min="50">auto</width>
                             <font>font20_title</font>
@@ -77,25 +77,7 @@
                             <pulseonselect>no</pulseonselect>
                         </control>
                         <control type="button" id="3015">
-                            <label>$ADDON[service.skipintro 30035]</label>
-                            <height>56</height>
-                            <width min="50">auto</width>
-                            <font>font20_title</font>
-                            <textoffsetx>15</textoffsetx>
-                            <textcolor>ddffffff</textcolor>
-                            <focusedcolor>eeffffff</focusedcolor>
-                            <selectedcolor>ddffffff</selectedcolor>
-                            <shadowcolor>22000000</shadowcolor>
-                            <aligny>center</aligny>
-                            <align>center</align>
-                            <texturefocus border="10" colordiffuse="FF172A91">button.png</texturefocus>
-                            <texturenofocus border="10" colordiffuse="FF212121">button.png</texturenofocus>
-                            <alttexturefocus border="10" colordiffuse="FF172A91">button.png</alttexturefocus>
-                            <alttexturenofocus border="10" colordiffuse="FF212121">button.png</alttexturenofocus>
-                            <pulseonselect>no</pulseonselect>
-                        </control>
-                        <control type="button" id="3016">
-                            <label>$ADDON[service.skipintro 30036]</label>
+                            <label>$ADDON[service.skipintro 30004]</label>
                             <height>56</height>
                             <width min="50">auto</width>
                             <font>font20_title</font>
