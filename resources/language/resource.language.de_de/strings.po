@@ -13,58 +13,82 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: en\n"
+"Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 1.8.7\n"
 
 ### APPLICATION
-msgctxt "#30032"
-msgid "Enable on playlists"
-msgstr "Aktiviere Wiedergabelisten"
-
-msgctxt "#30034"
-msgid "Close"
-msgstr "Schließen"
-
-msgctxt "#30035"
-msgid "Set skipping time for this show"
-msgstr "Lege Intro-Länge für diese Show fest"
-
-msgctxt "#30036"
-msgid "Disable skipping for this show"
-msgstr "Intro-Überspringen für diese Serie deaktivieren"
-
-msgctxt "#30037"
+msgctxt "#30001"
 msgid "Skip Intro ([COLOR FFFF4081]$INFO[Window.Property(remaining)][/COLOR] seconds)"
 msgstr "Überspringe Intro ([COLOR FFFF4081]$INFO[Window.Property(remaining)][/COLOR] Sekunden)"
 
+msgctxt "#30002"
+msgid "Close"
+msgstr "Schließen"
+
+msgctxt "#30004"
+msgid "More..."
+msgstr "Mehr..."
+
+msgctxt "#30005"
+msgid "Confirm deletion"
+msgstr "Löschen bestätigen"
+
+msgctxt "#30006"
+msgid "Are you sure you want to delete the TV show '{}'?"
+msgstr "Soll die Serie '{}' wirklich gelöscht werden?"
+
+msgctxt "#30007"
+msgid "TV show deleted from SkipIntro database"
+msgstr "Serie aus SkipIntro Datenbank gelöscht"
+
+msgctxt "#30008"
+msgid "[B]{}[/B] SkipIntro for this tv show"
+msgstr "SkipIntro für diese Serie [B]{}[/B]"
+
+msgctxt "#30009"
+msgid "Enable"
+msgstr "aktivieren"
+
+msgctxt "#30010"
+msgid "Disable"
+msgstr "deaktivieren"
+
+msgctxt "#30011"
+msgid "Use TV show data only"
+msgstr "Nur Seriendaten nutzen"
+
+msgctxt "#30012"
+msgid "Don't use TV show data only"
+msgstr "Auch Episiodendaten nutzen"
+
+msgctxt "#30013"
+msgid "Change show data"
+msgstr "Seriendaten ändern"
+
+msgctxt "#30014"
+msgid "Update episode data (API)"
+msgstr "Aktualisiere Episodenwerte (API)"
+
+msgctxt "#30015"
+msgid "Change episode data"
+msgstr "Episodendaten ändern"
+
+msgctxt "#30016"
+msgid "Soon: [I]Delete data of all episodes[/I]"
+msgstr "Bald: [I]Alle Episodendaten löschen[/I]"
+
+msgctxt "#30017"
+msgid "Delete data of this tv show"
+msgstr "Alle Daten dieser Serie löschen"
+
 msgctxt "#30038"
-msgid "Skip time (seconds)"
-msgstr "Intro Länge (Sekunden)"
+msgid "Intro end time (seconds)"
+msgstr "Intro Endzeitpunkt (Sekunden)"
 
 msgctxt "#30039"
-msgid "Prompt at (seconds)"
-msgstr "Anzeige nach (Sekunden)"
-
-msgctxt "#30040"
-msgid "Skip"
-msgstr "Überspringen"
-
-msgctxt "#30041"
-msgid "Not skip"
-msgstr "Nicht überspringen"
-
-msgctxt "#30042"
-msgid "None"
-msgstr "Keiner"
-
-msgctxt "#30043"
-msgid "Info"
-msgstr "Info"
-
-msgctxt "#30044"
-msgid "Debug"
-msgstr "Debug"
+msgid "Intro start time (seconds)"
+msgstr "Intro Startzeitpunkt (Sekunden)"
 
 msgctxt "#30060"
 msgid "[B]Skip Intro DEMO MODE ENABLED[/B]"
@@ -75,19 +99,39 @@ msgctxt "#30600"
 msgid "Behaviour"
 msgstr "Verhalten"
 
-msgctxt "#30603"
+msgctxt "#30610"
 msgid "Default action when nothing selected"
 msgstr "Standard-Aktion wenn nichts ausgewählt wird"
 
-msgctxt "#30607"
+msgctxt "#30611"
+msgid "Skip"
+msgstr "Überspringen"
+
+msgctxt "#30612"
+msgid "Not skip"
+msgstr "Nicht überspringen"
+
+msgctxt "#30620"
+msgid "Show popup if disabled for a TV show?"
+msgstr "Soll das Popup angezeigt werden, wenn es für eine Serie deaktiviert ist?"
+
+msgctxt "#30630"
+msgid "Use TVmaze and IntroDB to get intro data?"
+msgstr "Sollen TVmaze und IntroDB genutzt werden, um die Intro Daten zu holen?"
+
+msgctxt "#30640"
+msgid "Enable on playlists"
+msgstr "Aktiviere Wiedergabelisten"
+
+msgctxt "#30650"
 msgid "Default Skip for New Shows"
 msgstr "Standard Zeit zum Überspringen eines Intros"
 
-msgctxt "#30608"
+msgctxt "#30660"
 msgid "Notification time"
 msgstr "Benachrichtigungszeit"
 
-msgctxt "#30609"
+msgctxt "#30670"
 msgid "Duration in seconds for notification to be shown"
 msgstr "Dauer in Sekunden zum Anzeigen der Benachrichtigung"
 
@@ -95,26 +139,38 @@ msgctxt "#30700"
 msgid "Expert"
 msgstr "Experte"
 
-msgctxt "#30703"
+msgctxt "#30710"
 msgid "Disable Skip Intro"
 msgstr "Deaktiviere Skip Intro"
 
-msgctxt "#30705"
+msgctxt "#30720"
 msgid "Log level"
 msgstr "Loglevel"
+
+msgctxt "#30721"
+msgid "None"
+msgstr "Keiner"
+
+msgctxt "#30722"
+msgid "Info"
+msgstr "Info"
+
+msgctxt "#30723"
+msgid "Debug"
+msgstr "Debug"
 
 msgctxt "#30800"
 msgid "Developer"
 msgstr "Entwickler"
 
-msgctxt "#30801"
+msgctxt "#30810"
 msgid "Test how the user interface looks"
 msgstr "Testen, wie die Benutzeroberfläche aussieht"
 
-msgctxt "#30803"
+msgctxt "#30820"
 msgid "Enable DEMO mode"
 msgstr "DEMO-Modus aktivieren"
 
-msgctxt "#30807"
+msgctxt "#30830"
 msgid "Show an skipintro pop-up…"
 msgstr "skipintro pop-up anzeigen…"
